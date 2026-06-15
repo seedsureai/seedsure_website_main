@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --color-forest:  #244217;
+  --color-emerald: #5EA104;
+  --color-accent:  #7CBB06;
+  --color-gold:    #A4E54A;
+  --color-cream:   #FAFFF3;
+  --color-storm:   #132416;
+  --color-ink:     #1B2420;
+  --color-sage:    #E8F7D7;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Custom Scrollbar ────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FAFFF3; }
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 187, 6, 0.55);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(94, 161, 4, 0.75);
+}
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(164, 229, 74, 0.36);
+}
+
+/* ─── Focus ─────────────────────────────────────────────────────────────────── */
+a, button, input, textarea {
+  outline-color: var(--color-accent);
+}
+
+/* ─── Typography Utilities ───────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-dm-serif), Georgia, serif;
+}
+
+:where(h1, h2) {
+  font-family: var(--font-dm-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ─── Gradient Text ──────────────────────────────────────────────────────────── */
+.text-gradient-green {
+  background: linear-gradient(135deg, #2F7D32 0%, #8BC34A 50%, #2F7D32 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 7s ease infinite;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C9921A 0%, #F0B429 50%, #C9921A 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 7s ease infinite;
+}
+
+.text-gradient-white {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.75) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glassmorphism ──────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(47, 125, 50, 0.1);
+}
+
+/* ─── Section Helpers ────────────────────────────────────────────────────────── */
+.section-shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.section-title {
+  @apply text-3xl font-semibold tracking-normal text-seedsure-text sm:text-4xl;
+}
+
+.section-kicker {
+  @apply text-sm font-semibold uppercase tracking-[0.2em];
+  color: var(--color-accent);
+}
+
+/* ─── SDG Card ────────────────────────────────────────────────────────────────── */
+.sdg-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sdg-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ─── Hover Lift ─────────────────────────────────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── Noise grain overlay ────────────────────────────────────────────────────── */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Animated border ─────────────────────────────────────────────────────────── */
+.animated-border {
+  background: linear-gradient(90deg, #2F7D32, #8BC34A, #2F7D32);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────────── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(47, 125, 50, 0.3); }
+  50%       { box-shadow: 0 0 45px rgba(47, 125, 50, 0.65); }
+}
+
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}

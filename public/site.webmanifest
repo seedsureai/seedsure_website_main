@@ -1,0 +1,16 @@
+{
+  "name": "SeedSure AI",
+  "short_name": "SeedSure AI",
+  "description": "AI for better farming decisions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FFF0",
+  "theme_color": "#2F7D32",
+  "icons": [
+    {
+      "src": "/images/seedsure-logo-cropped.png",
+      "sizes": "1702x1278",
+      "type": "image/png"
+    }
+  ]
+}
